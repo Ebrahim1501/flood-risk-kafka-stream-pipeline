@@ -22,7 +22,7 @@ The architecture combines local and cloud-based compute instances to run produce
 
 ### Repository Structure :
 
-
+.
 ├── .gitignore
 ├── docker-compose.yml
 ├── broker-cmds.txt
