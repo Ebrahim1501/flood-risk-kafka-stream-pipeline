@@ -10,9 +10,10 @@ The architecture combines local and cloud-based compute instances to run produce
 ###  Key Features :
 - **Live visualization and logging** of flood warnings.
 - **Real-time metric measurements** from monitoring stations in high-risk areas.
-- **Stream ingestion and processing** from multiple sources including alert systems and sensor-based stations.
+- **Stream ingestion and processing** from multiple endpoints including alerts api and sensor-based station readings.
 - Generates a **unified analytical data model** for downstream use.
 
 
 ###  Architecture Overview :
+![Architecture](https://github.com/user-attachments/assets/50b5447b-d4ef-4eb5-8bad-eafcb5d309f6)
 
