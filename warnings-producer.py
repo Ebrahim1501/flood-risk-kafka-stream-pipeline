@@ -3,8 +3,7 @@ import json
 import time
 import pandas as pd
 import requests
-import credentials #scripts that retrieves all keys & credentials
-
+import credentials #storing keys & credentials
 
 warnings_url=f'{credentials.root}/id/floods'
 #print(warnings_url)

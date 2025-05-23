@@ -68,8 +68,9 @@ for message in analytics_consumer:
         analytics_df=pd.merge(measures_df,warnings_df,left_on='stationReference',right_on='responsible_station') #join two df on the station code
         #print(analytics_df.columns)
         analytics_df=analytics_df[['warning_id','reading_id','responsible_station','TimeStamp','country','AreaName','isTidal','floodAreaID','parameterName','value','unit','severity']] 
-        analytics_df.to_csv('sample-analytical-table.csv')
-        upload_df_to_s3(analytics_df,bucket=credentials.bucket_name,key=credentials.key)
+        
+        #analytics_df.to_csv('sample-analytical-table.csv') #save csv locally
+        upload_df_to_s3(analytics_df,bucket=credentials.bucket_name,key=credentials.key) #save to s3 bucket 
         
         warnings.clear()
         measures.clear() #clearing data after each stream processing

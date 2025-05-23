@@ -1,51 +1,9 @@
 import folium
 import json
 import threading
-
-
-
-
-# def update_map(coords_list):
-#     global current_map
-#     current_map = folium.Map(location=[51.5, -0.1], zoom_start=7)
-
-#     for polygon in coords_list:
-#         try:
-#             flood_area_name = polygon.get("properties", {}).get("eaAreaName", "Flood Warning Area")
-            
-            
-#             poly_coords = polygon["features"][0]["geometry"]["coordinates"]
-#             poly_type = polygon["features"][0]["geometry"]["type"]
-
-#             if poly_type == "MultiPolygon":
-#                 for poly in poly_coords:
-#                     for ring in poly:
-#                         folium.Polygon(
-#                             locations=[[lat, lon] for lon, lat in ring],
-#                             weight=10,
-#                             opacity=1,
-#                             fill=True,
-#                             fill_color='red',
-#                             fill_opacity=0.5,
-#                             color='red',
-#                             popup=flood_area_name
-#                         ).add_to(current_map)
-#                         print("Multi Polygon Added")
-#             elif poly_type == "Polygon":
-#                 for ring in poly_coords:
-#                     folium.Polygon(
-#                         locations=[[lat, lon] for lon, lat in ring],
-#                         weight=10,
-#                         opacity=1,
-#                         fill=True,
-#                         fill_color='red',
-#                         fill_opacity=0.5,
-#                         color='red',
-#                         popup=flood_area_name
-#                     ).add_to(current_map)
-#                     print("Polygon Added")
-#         except Exception as e:
-#             print(f"Error parsing polygon: {e}")
+import boto3
+from io import StringIO
+import  credentials
 
 
 
@@ -119,3 +77,22 @@ def get_polygon_center(polygon_response):
             centroid_lon = sum(lons) / len(lons)
             centroid_lat = sum(lats) / len(lats)
             return centroid_lon,centroid_lat
+        
+        
+        
+def upload_df_to_s3(df, bucket, key):
+    s3 = boto3.client(
+        's3',
+        aws_access_key_id=credentials.AWS_ACCESS_KEY_ID,
+        aws_secret_access_key=credentials.AWS_SECRET_ACCESS_KEY
+    )
+    
+    csv_buffer = StringIO()
+    df.to_csv(csv_buffer, index=False)
+    
+    s3.put_object(
+        Bucket=bucket,
+        Key=key,
+        Body=csv_buffer.getvalue()
+    )
+    return True

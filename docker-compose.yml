@@ -1,3 +1,5 @@
+
+#This Compose File is Intended to run inside an EC2 instances Don't Forget to add Your Actual EC2 configurations down there!
 version: '3'
 services:
   zookeeper:  
@@ -15,7 +17,7 @@ services:
     environment:
       KAFKA_BROKER_ID: 1
       KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://<EC2_PUBLIC_IP>:9092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://<PUT_YOUR_EC2_PUBLIC_IP_HERE>:9092
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
       ALLOW_PLAINTEXT_LISTENER: "yes"
       TOPIC_AUTO_CREATE: "false"

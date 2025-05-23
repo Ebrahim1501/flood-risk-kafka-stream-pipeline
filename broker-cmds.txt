@@ -1,5 +1,8 @@
+# write these commands  inside the broker's server:
+
+docker-compose up
+
 docker exec -it kafka-broker bash
 
-# these commands to be written inside the broker:
 cd opt/kafka/bin && kafka-topics.sh --create --topic --floods-warnings --partitions=20 --zookeeper=zookeeper:2181 --replication-factor=1
 
