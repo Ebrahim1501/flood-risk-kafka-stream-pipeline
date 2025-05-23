@@ -21,7 +21,7 @@ The architecture combines local and cloud-based compute instances to run produce
 
 
 ### Repository Structure :
-```plaintext
+```
 
 .
 ├── .gitignore
@@ -33,5 +33,5 @@ The architecture combines local and cloud-based compute instances to run produce
 ├── analytics-consumer.py
 └── webserver-warnings-consumer.py
 
-
+```
 
