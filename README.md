@@ -17,3 +17,20 @@ The architecture combines local and cloud-based compute instances to run produce
 ###  Architecture Overview :
 ![Architecture](https://github.com/user-attachments/assets/50b5447b-d4ef-4eb5-8bad-eafcb5d309f6)
 
+
+
+
+### Repository Structure :
+
+
+├── .gitignore
+├── docker-compose.yml
+├── broker-cmds.txt
+├── utils.py
+├── warnings-producer.py
+├── stations-measures-producer.py
+├── analytics-consumer.py
+└── webserver-warnings-consumer.py
+
+
+
