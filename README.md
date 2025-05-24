@@ -23,7 +23,23 @@ The architecture combines local and cloud-based compute instances to run produce
 
 ###  Architecture Overview :
 ![Architecture](https://github.com/user-attachments/assets/50b5447b-d4ef-4eb5-8bad-eafcb5d309f6)
+- **Kafka Broker:**  
+  A centrally hosted EC2 instance in the cloud that acts as a message broker, receiving and streaming data from producers to consumers. It hosts two main topics:
+  - `Flood-Warnings-topic`
+  - `Station-metrics-topic`  
+  Both topics are internally partitioned to support parallel workload handling.
 
+- **Flood Warnings Producer:**  
+  An EC2 instance responsible for capturing real-time warning data from a streaming API and publishing it to the `Flood-Warnings-topic` on the Kafka broker.
+
+- **Station Metrics Producer:**  
+  A component that captures real-time measurements from various flood monitoring stations and publishes the data to the `Station-metrics-topic`.
+
+- **Web Server Consumer Group:**  
+  A set of Flask-based local servers that consume data from the `Flood-Warnings-topic`. These servers visualize the incoming data on a real-time map using GeoJSON location data provided by the API.
+
+- **Analytics Consumer Instance:**  
+  One or more EC2 instances that consume data from both the warnings and station metrics streams. These instances perform data processing, joining, and aggregation to generate analytical insights that highlight relationships between flood severity and station measurements.
 
 
 
