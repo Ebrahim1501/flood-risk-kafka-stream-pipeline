@@ -24,7 +24,7 @@ The architecture combines local and cloud-based compute instances to run produce
 ###  Architecture Overview :
 ![Architecture](https://github.com/user-attachments/assets/50b5447b-d4ef-4eb5-8bad-eafcb5d309f6)
 #### Key Components
-- **Kafka Broker:**  
+- **📦 Kafka Broker:**  
   A centrally hosted EC2 instance in the cloud that acts as a message broker, receiving and streaming data from producers to consumers. It hosts two main topics:
   - `Flood-Warnings-topic`
   - `Station-metrics-topic`  
