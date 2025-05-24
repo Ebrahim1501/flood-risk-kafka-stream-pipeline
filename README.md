@@ -48,7 +48,7 @@ The architecture combines local and cloud-based compute instances to run produce
 ```
 
 .
-├── .gitignore
+├── .gitignore 
 ├── docker-compose.yml
 ├── broker-cmds.txt
 ├── utils.py
@@ -59,3 +59,25 @@ The architecture combines local and cloud-based compute instances to run produce
 
 ```
 
+####  File Descriptions
+
+- **`docker-compose.yml`**  
+  A Docker Compose file for quickly setting up and running Kafka on a local or cloud server. *(Remember to configure it with your actual Kafka server/instance connection info.)*
+
+- **`broker-cmds.txt`**  
+  Contains shell commands to create and configure Kafka topics and partitions inside the broker.
+
+- **`utils.py`**  
+  A utility script containing reusable global functions and helper methods shared across producers and consumers.
+
+- **`warnings-producer.py`**  
+  A Kafka producer script that runs on your producer instance to ingest live flood warning data from an external API and publish it to the `Flood-Warnings-topic`.
+
+- **`stations-measures-producer.py`**  
+  Captures real-time sensor measurements from all monitoring stations and sends the data to the `Station-metrics-topic`.
+
+- **`webserver-warnings-consumer.py`**  
+  A Flask-based backend server that visualizes flood warnings in real time using geographic data (e.g., GeoJSON) streamed from Kafka.
+
+- **`analytics-consumer.py`**  
+  A Kafka consumer script (typically running on an EC2 instance) that processes and joins data from both topics, performing aggregation and saving the results as CSV files for analytical modeling.
