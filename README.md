@@ -5,6 +5,13 @@ The pipeline ingests and processes streamed data from both flood alert sources a
 
 The architecture combines local and cloud-based compute instances to run producers, consumers, and the primary Kafka broker.
 
+**Web Page SnapShots:**
+
+
+![floodriskguisample3](https://github.com/user-attachments/assets/fbecbf87-c0db-462b-a22c-a3230398add2)
+![FloodWarningsGUIsample](https://github.com/user-attachments/assets/ce1ce44d-8eba-47f9-b1b7-edd5e775e6d2)
+![FloodWarningSample2](https://github.com/user-attachments/assets/7d18c848-d477-4058-affe-dc41e309e5f0)
+
 
 
 ###  Key Features :
